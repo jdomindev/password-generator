@@ -122,27 +122,29 @@ function buildPassword(
     }
   }
   // divisionCount is number of characters to take from each array of characters
-  var divisionCount = (characterCount) / conditionsCount;
+  var divisionCount = characterCount / conditionsCount;
   var isDecimal = divisionCount % 1 < 0;
+  var totals = [];
   // var isDecimalGreater = divisionCount % 1 >= .25;
 
   if (isDecimal) {
     Math.floor(divisionCount) + 1;
     console.log(divisionCount);
   }
+  // if (conditionsCount >= 3) {
+  //   Math.floor(divisionCount) - 1;
+  // }
 
   // if (isDecimalGreater) {
   //   Math.floor(divisionCount) - 1;
   // }
-
-  // else if (conditionsCount >= 3) {
-  //   Math.floor(divisionCount) - 1;
-  // }
+  // divisionCount
 
   console.log("conditionsCount", conditionsCount);
   console.log("characterCount", characterCount);
   console.log(characterCount / conditionsCount);
 
+  // if statements to verify the type was selected (true) then selecting a random variable in that array and looping that as many times as the division count. Then combined it (push) to empty array.
   if (isLowercase) {
     for (i = 0; i < divisionCount; i++) {
       var randomLowercaseChar = Math.floor(
@@ -177,53 +179,55 @@ function buildPassword(
   }
   // function to shuffle combinedArray (Fisher-Yates Shuffle)
   function shuffle(combinedArray) {
-  var i = combinedArray.length, j , temp;
-  while(--i > 0) {
-    j = Math.floor(Math.random() * (i+1));
-    temp = combinedArray[j];
-    combinedArray[j] = combinedArray[i];
-    combinedArray[i] = temp;
+    var i = combinedArray.length,
+      j,
+      temp;
+    while (--i > 0) {
+      j = Math.floor(Math.random() * (i + 1));
+      temp = combinedArray[j];
+      combinedArray[j] = combinedArray[i];
+      combinedArray[i] = temp;
+    }
   }
-  }
-  shuffle(combinedArray)
+  shuffle(combinedArray);
   var passwordFinal = combinedArray.join("");
   console.log(passwordFinal.length);
   return passwordFinal;
 }
 
-//   if (isLowercase) {
-//     // meet conditions entered by user
-//     var randomLowercaseChar =
-//       Math.floor(Math.random()) * (lowercaseCharacters.length - 1);
-//     // selects random number in array based on length on variable's array
-//     combinedArray.push(lowercaseCharacters[randomLowercaseChar]);
-//   }
-//   // pushes that random value from array onto combinedArray
+// if (isLowercase) {
+//   // meet conditions entered by user
+//   var randomLowercaseChar =
+//     Math.floor(Math.random()) * (lowercaseCharacters.length - 1);
+//   // selects random number in array based on length on variable's array
+//   combinedArray.push(lowercaseCharacters[randomLowercaseChar]);
+// }
+// // pushes that random value from array onto combinedArray
 
-//   if (isUppercase) {
-//     var randomUppercaseChar =
-//       Math.floor(Math.random()) * (uppercaseCharacters.length - 1);
-//     combinedArray.push(uppercaseCharacters[randomUppercaseChar]);
-//   }
+// if (isUppercase) {
+//   var randomUppercaseChar =
+//     Math.floor(Math.random()) * (uppercaseCharacters.length - 1);
+//   combinedArray.push(uppercaseCharacters[randomUppercaseChar]);
+// }
 
-//   if (isNumber) {
-//     var randomNumberChar =
-//       Math.floor(Math.random()) * (numberCharacters.length - 1);
-//     combinedArray.push(numberCharacters[randomNumberChar]);
-//   }
+// if (isNumber) {
+//   var randomNumberChar =
+//     Math.floor(Math.random()) * (numberCharacters.length - 1);
+//   combinedArray.push(numberCharacters[randomNumberChar]);
+// }
 
-//   if (isSpecial) {
-//     var randomSpecialChar =
-//       Math.floor(Math.random()) * (specialCharacters.length - 1);
-//     combinedArray.push(specialCharacters[randomSpecialChar]);
-//   }
+// if (isSpecial) {
+//   var randomSpecialChar =
+//     Math.floor(Math.random()) * (specialCharacters.length - 1);
+//   combinedArray.push(specialCharacters[randomSpecialChar]);
+// }
 
-//   var fillerCharacterCount = characterCount - combinedArray.length;
-//   console.log(fillerCharacterCount);
-//   for (var i = 0; i < fillerCharacterCount; i++) {
-//     console.log(i);
+// var fillerCharacterCount = characterCount - combinedArray.length;
+// console.log(fillerCharacterCount);
+// for (var i = 0; i < fillerCharacterCount; i++) {
+//   console.log(i);
 
-//   }
+// }
 
 // // push creates combined array,
 // // array will only have as many characters as types selected
@@ -267,7 +271,7 @@ function generatePassword() {
       window.alert("Please select at least one character type.");
     }
   } else {
-    window.alert("Please enter a number between 8 and 128")
+    window.alert("Please enter a number between 8 and 128");
   }
 }
 
